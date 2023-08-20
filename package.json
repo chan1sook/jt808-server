@@ -1,11 +1,13 @@
 {
   "name": "@chan1sook/jtt808-server",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "JT/T808 Server",
-  "main": "index.js",
+  "main": "./dist/main.js",
+  "types": "./types/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish" : "npm publish --access public"
+    "test": "node tests/run.js",
+    "build": "npx tsc",
+    "publish": "npm run build && npm publish --access:public"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/chan1sook/jt808-server/issues"
   },
-  "homepage": "https://github.com/chan1sook/jt808-server#readme"
+  "homepage": "https://github.com/chan1sook/jt808-server#readme",
+  "devDependencies": {
+    "@tsconfig/node-lts": "^18.12.3",
+    "@types/node": "^20.5.0",
+    "typescript": "^5.1.6"
+  }
 }
