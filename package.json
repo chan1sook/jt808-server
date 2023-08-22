@@ -1,6 +1,6 @@
 {
   "name": "@chan1sook/jtt808-server",
-  "version": "0.0.7",
+  "version": "0.0.10",
   "description": "JT/T808 Server",
   "main": "./dist/main.js",
   "types": "./types/main.d.ts",

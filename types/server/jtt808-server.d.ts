@@ -56,4 +56,6 @@ export declare class Jtt808Server {
      * @param port Server Port
      */
     listen(port?: number): void;
+    _onConnection(socket: net.Socket): void;
+    _onClose(): void;
 }

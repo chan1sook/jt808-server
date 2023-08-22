@@ -47,7 +47,7 @@ export class Jtt808LocationReportData extends Jtt808ProtocolData {
     // bit 16: Vibration alarm
     // bit 28: Illegal displacement of the vehicle
     // bit 31: Reserved
-    const alarmStatus = unescapedRawData.readUint32BE(13);
+    const alarmStatus = unescapedRawData.readUInt32BE(13);
 
     this.#isOverspeed = !!(alarmStatus & 0x00000002);
     this.#isGNSSFault = !!(alarmStatus & 0x00000010);
@@ -69,7 +69,7 @@ export class Jtt808LocationReportData extends Jtt808ProtocolData {
     // bit 27-29: network modes; 000-UNREGISTERED; 001-GSM; 010-LTE; 011-CATM; 100-NBIOT
     // bit 30: 0-normal data 1-TOW data
     // bit 31: 0-real time data 1-buffer data
-    const gpsStatus = unescapedRawData.readUint32BE(17);
+    const gpsStatus = unescapedRawData.readUInt32BE(17);
 
     this.#isACCOn = !!(gpsStatus & 0x00000001);
     this.#isGNSSPositionFixed = !!(gpsStatus & 0x00000002);
@@ -96,7 +96,7 @@ export class Jtt808LocationReportData extends Jtt808ProtocolData {
     this.#isBufferedData = !!(gpsStatus & 0x80000000);
 
     // Latitude data (21, 4 bytes)
-    const latitude = unescapedRawData.readUint32BE(21);
+    const latitude = unescapedRawData.readUInt32BE(21);
     const latValue = latitude / 10e5;
     if(isSouthern) {
       this.#latitude = -latValue;
@@ -105,7 +105,7 @@ export class Jtt808LocationReportData extends Jtt808ProtocolData {
     }
     
     // Longitude data (25, 4 bytes)
-    const longitude = unescapedRawData.readUint32BE(25);
+    const longitude = unescapedRawData.readUInt32BE(25);
     const lngValue = longitude / 10e5;
     if(isWestern) {
       this.#longitude = -lngValue;
@@ -114,15 +114,15 @@ export class Jtt808LocationReportData extends Jtt808ProtocolData {
     }
 
     // Altitude data (29, 2 bytes)
-    this.#altitudeMeter = unescapedRawData.readUint16BE(29);
+    this.#altitudeMeter = unescapedRawData.readUInt16BE(29);
 
     // TODO what is 1/10 km/hr
     // Speed data (31, 2 bytes)
-    const speed = unescapedRawData.readUint16BE(31);
+    const speed = unescapedRawData.readUInt16BE(31);
     this.#speedKmHr = speed * 10;
 
     // Direction data (33, 2 bytes)
-    this.#directionDeg = unescapedRawData.readUint16BE(33);
+    this.#directionDeg = unescapedRawData.readUInt16BE(33);
 
     // Time data (35, 6 bytes) bcd;
     // YY-MM-DD-hh-mm-ss UTC

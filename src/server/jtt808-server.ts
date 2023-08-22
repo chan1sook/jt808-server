@@ -16,8 +16,8 @@ export class Jtt808Server {
     this.#event = new EventEmitter();
     this.#parser = new Jtt808ProtocolParser();
 
-    this.#server.on("connection", this.#_onConnection.bind(this));
-    this.#server.on("close", this.#_onClose.bind(this));
+    this.#server.on("connection", this._onConnection.bind(this));
+    this.#server.on("close", this._onClose.bind(this));
   }
 
   /**
@@ -99,7 +99,7 @@ export class Jtt808Server {
     });
   }
 
-  #_onConnection(socket: net.Socket) {
+  _onConnection(socket: net.Socket) {
     this.#event.emit("connection", socket);
 
     socket.on("data", (chunk) => {
@@ -121,7 +121,7 @@ export class Jtt808Server {
     });
   }
 
-  #_onClose() {
+  _onClose() {
     this.#event.emit("close");
   }
 }
