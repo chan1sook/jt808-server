@@ -1,18 +1,19 @@
 {
   "name": "@chan1sook/jtt808-server",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "JT/T808 Server",
   "main": "./dist/main.js",
   "types": "./types/main.d.ts",
   "scripts": {
     "test": "node tests/run.js",
     "build": "npx tsc",
-    "publish": "npm run build && npm publish --access:public"
+    "publish": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chan1sook/jt808-server.git"
   },
+  "keywords": ["jt/t808", "jt808"],
   "author": "Natthawat Raocharoensinp",
   "license": "ISC",
   "bugs": {

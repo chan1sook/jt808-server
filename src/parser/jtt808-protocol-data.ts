@@ -137,4 +137,18 @@ export class Jtt808ProtocolData {
     
     return this.#isChecksumValid;
   }
+  
+  toJSON() {
+    return {
+      rawData: this.rawData.toString("hex"),
+      unescapedRawData: this.unescapedRawData.toString("hex"),
+      deviceNumber: this.deviceNumber,
+      messageType: this.messageType,
+      messageCounter: this.messageCounter,
+      encryption: this.encryption,
+      messageLength: this.messageLength,
+      isChecksumValid: this.isChecksumValid,
+      isMessageValid: this.isMessageValid,
+    }
+  }
 }

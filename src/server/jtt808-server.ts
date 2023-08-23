@@ -80,7 +80,6 @@ export class Jtt808Server {
     this.#event.off(eventName, listener);
     return this;
   }
-
   
   /**
    * Start server

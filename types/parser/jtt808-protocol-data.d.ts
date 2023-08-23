@@ -43,5 +43,16 @@ export declare class Jtt808ProtocolData {
     get unescapedRawData(): Buffer;
     [inspectCustom](): string;
     get isMessageValid(): boolean;
+    toJSON(): {
+        rawData: string;
+        unescapedRawData: string;
+        deviceNumber: string;
+        messageType: number;
+        messageCounter: number;
+        encryption: Jtt808EncryptionMode;
+        messageLength: number;
+        isChecksumValid: boolean;
+        isMessageValid: boolean;
+    };
 }
 export {};
